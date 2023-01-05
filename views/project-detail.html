@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day 11 | Auth&Session</title>
+    <link rel="stylesheet" href="/public/css/project-detail.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+        integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+        <!-- header -->
+        <header>
+            <nav>
+                <!--left -->
+                <div class="nav-left">
+                    <a href="index.html">
+                      <img src="/public/images/brandred.png" alt="logo brand">
+                    </a>
+                    <ul>
+                        <li>
+                            <a href="/">Home</a>
+                        </li>
+                        <li>
+                            <a href="/project">Add Project</a>
+                        </li>
+                    </ul>
+                </div>
+                <!-- right -->
+                <div class="nav-right">
+                    <a href="contact.html">Contact Me</a>
+                </div>
+            </nav>
+        </header>
+
+    <main>
+        <!-- PROJECT DETAIL -->
+        <section class="details">
+            <h2 style="padding-left:40%; font-weight:600; font-size:30px;">{{ .renderDetails.ProjectName }}</h2>
+            <div class="detail-content">
+                <div class="content-left">
+                    <img src="/public/images/gambar.jpg" alt="image" height="350px">
+                </div>
+                <div class="content-right">
+                    <div class="content-duration">
+                        <h3 style="font-weight: 600;">Duration</h3>
+                        <div class="content-date">
+                            <p><i class="fas fa-calendar"></i>{{.renderDetails.StartDateString}} -
+								{{.renderDetails.EndDateString}}</p>
+                            <p><i class="fas fa-clock"></i>{{ .renderDetails.Duration }}</p>
+                        </div>
+                    </div>
+                    <div class="content-technologies">
+                        <h3 style="font-weight: 600;">Technologies</h3>
+                        <div class="technologies-item">
+                            {{ range $index, $data := .renderDetails.Technologies }}
+                            <div class="col-6">
+								<img width="18" class="icon me-2" src="/public/icons/{{ $data }}.svg" alt="Icon" />{{
+									if (eq $data "nodejs") }} Node JS
+									{{ else if (eq $data "react-native") }} React JS
+									{{ else if (eq $data "nextjs") }} Next JS
+									{{ else if (eq $data "vuejs") }} Vue JS
+									{{ end }}
+							</div>
+                            {{ end }}
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="content-description">
+                <p>
+                    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Numquam reprehenderit eaque nulla beatae,
+                    quam impedit eos ex ipsam placeat officiis sunt doloremque soluta itaque dolor culpa incidunt dolore
+                    quisquam quos!
+                    Ipsum cum sed magnam suscipit voluptate asperiores quam ducimus debitis totam quas magni eos optio,
+                    velit delectus placeat omnis. Excepturi nihil, eligendi saepe esse mollitia fugit sit voluptatum
+                    officia repellendus!
+                    <br>
+                    <br>
+                    Repellendus autem odit nihil. Quo error, illo aliquid et eaque totam culpa repellendus ratione
+                    suscipit nostrum cumque porro. Non debitis eveniet expedita iure, perspiciatis ullam iusto impedit
+                    maxime sunt optio.
+                    Quam rerum natus odit maxime sit neque delectus atque quod animi odio temporibus, distinctio iure
+                    aperiam cupiditate similique provident nisi id aspernatur unde? Voluptates quidem reprehenderit
+                    eveniet quia sunt illo.
+                    <br>
+                    <br>
+                    Corrupti id beatae nostrum doloremque quis vero cupiditate corporis consequuntur debitis assumenda
+                    aperiam laudantium sunt optio ullam harum error saepe, dolores ea alias deleniti facilis maiores.
+                    Quas accusantium esse inventore.
+                    Eveniet provident velit rem quaerat nihil eaque sapiente laudantium, iusto, reprehenderit optio
+                    mollitia, voluptates magnam ut vel doloremque voluptatem nemo. Veniam eveniet error fugiat modi nisi
+                    perspiciatis ipsam eaque soluta.
+                    <br>
+                    <br>
+                    Quidem ducimus voluptate magnam quae, quaerat fuga. Corrupti harum ratione tempora consequatur,
+                    soluta blanditiis alias inventore dolore, ab sit ducimus iusto minima error, perspiciatis eos libero
+                    vel distinctio ipsam dolorem.
+                    Voluptatum unde assumenda quod itaque veniam, soluta dolore, tempora qui deserunt, eum harum rerum
+                    nihil voluptatibus debitis et laborum. Repellendus officiis laudantium nemo distinctio obcaecati non
+                    praesentium, ut quas excepturi.
+                    <br>
+                    <br>
+                    Sequi, quidem illum? Illo nulla error optio velit neque debitis, vero, nisi, voluptatibus ipsam
+                    libero repudiandae. Laborum libero illum eligendi, molestiae assumenda fugiat porro voluptas animi
+                    alias incidunt autem veritatis.
+                    Aut quidem saepe architecto aperiam magnam animi. Voluptate saepe harum officia dignissimos ab animi
+                    illo veritatis sapiente natus labore ullam consequuntur repudiandae nostrum, vel fugiat beatae
+                    quaerat temporibus odio aut.
+                </p>
+            </div>
+        </section>
+    </main>
+
+</body>
+
+</html>
