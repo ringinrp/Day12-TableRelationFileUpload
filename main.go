@@ -70,7 +70,7 @@ func main() {
 	// CREATE PROJECT
 	route.HandleFunc("/project", project).Methods("GET")
 	route.HandleFunc("/edit-project/{id}", editForm).Methods("GET")
-	route.HandleFunc("/edited-project/{id}", editProject).Methods("POST")
+	route.HandleFunc("/edited-project/{id}", middleware.UploadFile(editProject)).Methods("POST")
 	route.HandleFunc("/project-detail/{id}", ProjectDetails).Methods("GET")
 	route.HandleFunc("/project/addproject", middleware.UploadFile(addproject)).Methods("POST")
 	route.HandleFunc("/project-details/{id}", ProjectDetails).Methods("GET")
@@ -309,10 +309,14 @@ func editProject(w http.ResponseWriter, r *http.Request) {
 		StartDate, _ := time.Parse(layoutISO, r.PostForm.Get("date-start"))
 		EndDate, _ := time.Parse(layoutISO, r.PostForm.Get("date-end"))
 		Technologies := r.Form["technologies"]
+		// Image := r.PostForm.Get("upload-image")
+
+		dataContext := r.Context().Value("dataFile")
+		image := dataContext.(string)
 
 		_, err = connection.Conn.Exec(context.Background(), `UPDATE public.tb_project
-		SET project_name=$1, description=$2, start_date=$3, end_date=$4, technologies=$5
-		WHERE id=$6;`, ProjectName, Description, StartDate, EndDate, Technologies, ID)
+		SET project_name=$1, description=$2, start_date=$3, end_date=$4, technologies=$5, image=$6
+		WHERE id=$7;`, ProjectName, Description, StartDate, EndDate, Technologies, image, ID)
 		if err != nil {
 			w.WriteHeader(http.StatusInternalServerError)
 			w.Write([]byte("message : " + err.Error()))

@@ -56,7 +56,7 @@
         <h2 style="display: flex; justify-content:center; margin-top:5%;">EDIT PROJECT</h2>
         <!-- PROJECT FORM -->
         <section class="project-form">
-            <form action="/edited-project/{{ .Project.ID }}" class="project-input" id="project-input" method="post">
+            <form action="/edited-project/{{ .Project.ID }}" class="project-input" id="project-input" method="post" enctype="multipart/form-data">
                 <div class="input-row my-3">
                     <div class="col-md-12">
                         <label for="project" class="form-label fw-bold">Project Name</label>
@@ -117,7 +117,7 @@
                 </div>
                 <div class="mb-3">
                     <label for="upload-image">Upload Image</label>
-                    <input class="form-control mt-2" type="file" id="upload-image">
+                    <input class="form-control mt-2" name="upload-image" type="file" id="upload-image">
                   </div>
 
                 <button type="submit" class="btn btn-primary">Submit</button>
